@@ -1,0 +1,23 @@
+buildscript {
+  repositories {
+    google()
+    jcenter()
+  }
+  dependencies {
+    classpath 'org.gradle.api.plugins:gradle-nexus-plugin:0.7.1'
+    classpath 'com.android.tools.build:gradle:3.2.1'
+  }
+}
+
+allprojects {
+  repositories {
+    google()
+    jcenter()
+  }
+
+  group = 'org.solovyev.android.aspecta'
+  version = '1.0.0'
+
+  apply plugin: 'maven'
+}
+
