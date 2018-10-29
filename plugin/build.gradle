@@ -1,3 +1,4 @@
+apply plugin: 'maven'
 apply plugin: 'groovy'
 apply plugin: 'nexus'
 
@@ -30,7 +31,7 @@ modifyPom {
 
     developers {
       developer {
-        id serso
+        id "serso"
         name "Sergey Solovyev"
       }
     }
