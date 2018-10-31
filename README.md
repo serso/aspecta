@@ -7,6 +7,11 @@ In `build.gradle`:
 ```groovy
 buildscript {
   dependencies {
+    repositories {
+      google()
+      jcenter()
+    }
+
     classpath 'org.solovyev.android.aspecta:plugin:1.0.0'
   }
 }
