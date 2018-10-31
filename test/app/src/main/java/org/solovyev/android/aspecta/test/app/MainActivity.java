@@ -12,22 +12,21 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package org.solovyev.android.aspecta;
+package org.solovyev.android.aspecta.test.app;
 
-import android.app.Application;
-import android.support.annotation.NonNull;
-import android.widget.Toast;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
-import org.aspectj.lang.JoinPoint;
+public class MainActivity extends AppCompatActivity {
 
-public class App extends Application {
+    @MyAnnotation
+    public void wovenMethod() {
+    }
 
-    public App() {
-        MyAspect.setListener(new MyAspect.Listener() {
-            @Override
-            public void onExecuted(@NonNull JoinPoint jp) {
-                Toast.makeText(App.this, jp.getSignature().getName(), Toast.LENGTH_SHORT).show();
-            }
-        });
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        wovenMethod();
+        setContentView(R.layout.activity_main);
     }
 }

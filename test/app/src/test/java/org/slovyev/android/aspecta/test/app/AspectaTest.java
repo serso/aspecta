@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package org.slovyev.android.aspecta;
+package org.slovyev.android.aspecta.test.app;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
@@ -21,9 +21,9 @@ import static org.mockito.Mockito.verify;
 
 import org.aspectj.lang.JoinPoint;
 import org.junit.Test;
-import org.solovyev.android.aspecta.BuildConfig;
-import org.solovyev.android.aspecta.MainActivity;
-import org.solovyev.android.aspecta.MyAspect;
+import org.solovyev.android.aspecta.test.app.BuildConfig;
+import org.solovyev.android.aspecta.test.app.MainActivity;
+import org.solovyev.android.aspecta.test.app.MyAspect;
 
 public class AspectaTest {
 

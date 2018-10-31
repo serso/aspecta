@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package org.solovyev.android.aspecta;
+package org.solovyev.android.aspecta.test.app;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -36,11 +36,11 @@ public class MyAspect {
         sListener = listener;
     }
 
-    @Pointcut("execution(@org.solovyev.android.aspecta.MyAnnotation * *(..))")
+    @Pointcut("execution(@org.solovyev.android.aspecta.test.app.MyAnnotation * *(..))")
     public void method() {
     }
 
-    @Pointcut("execution(@org.solovyev.android.aspecta.MyAnnotation *.new(..))")
+    @Pointcut("execution(@org.solovyev.android.aspecta.test.app.MyAnnotation *.new(..))")
     public void constructor() {
     }
 

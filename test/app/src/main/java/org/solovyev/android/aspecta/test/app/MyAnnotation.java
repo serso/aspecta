@@ -12,21 +12,14 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package org.solovyev.android.aspecta;
+package org.solovyev.android.aspecta.test.app;
 
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
-public class MainActivity extends AppCompatActivity {
-
-    @MyAnnotation
-    public void wovenMethod() {
-    }
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        wovenMethod();
-        setContentView(R.layout.activity_main);
-    }
+@Retention(RetentionPolicy.CLASS)
+@Target({ElementType.METHOD, ElementType.CONSTRUCTOR})
+public @interface MyAnnotation {
 }

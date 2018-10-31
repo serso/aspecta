@@ -23,7 +23,7 @@ android {
   compileSdkVersion 28
 
   defaultConfig {
-    applicationId "org.solovyev.android.aspecta"
+    applicationId "org.solovyev.android.aspecta.test.app"
     minSdkVersion 21
     targetSdkVersion 28
     versionCode 1

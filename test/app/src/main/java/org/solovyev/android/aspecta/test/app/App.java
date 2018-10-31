@@ -12,14 +12,22 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package org.solovyev.android.aspecta;
+package org.solovyev.android.aspecta.test.app;
 
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+import android.app.Application;
+import android.support.annotation.NonNull;
+import android.widget.Toast;
 
-@Retention(RetentionPolicy.CLASS)
-@Target({ElementType.METHOD, ElementType.CONSTRUCTOR})
-public @interface MyAnnotation {
+import org.aspectj.lang.JoinPoint;
+
+public class App extends Application {
+
+    public App() {
+        MyAspect.setListener(new MyAspect.Listener() {
+            @Override
+            public void onExecuted(@NonNull JoinPoint jp) {
+                Toast.makeText(App.this, jp.getSignature().getName(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
 }
