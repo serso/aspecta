@@ -24,6 +24,8 @@ import org.junit.Test;
 import org.solovyev.android.aspecta.test.app.BuildConfig;
 import org.solovyev.android.aspecta.test.app.MainActivity;
 import org.solovyev.android.aspecta.test.app.AppAspect;
+import org.solovyev.android.aspecta.test.lib.LibAspect;
+import org.solovyev.android.aspecta.test.lib.LibObject;
 
 public class AppAspectaTest {
 
@@ -33,7 +35,7 @@ public class AppAspectaTest {
         AppAspect.setListener(listener);
 
         final MainActivity activity = new MainActivity();
-        activity.wovenMethod();
+        activity.appWovenMethod();
 
         if (BuildConfig.DEBUG) {
             verify(listener).onExecuted(any(JoinPoint.class));
@@ -41,5 +43,21 @@ public class AppAspectaTest {
             verify(listener, never()).onExecuted(any(JoinPoint.class));
         }
         AppAspect.setListener(null);
+    }
+
+    @Test
+    public void shouldNotInjectLibAspectTwice() {
+        final LibAspect.Listener listener = mock(LibAspect.Listener.class);
+        LibAspect.setListener(listener);
+
+        final LibObject obj = new LibObject();
+        obj.wovenMethod();
+
+        if (BuildConfig.DEBUG) {
+            verify(listener).onExecuted(any(JoinPoint.class));
+        } else {
+            verify(listener, never()).onExecuted(any(JoinPoint.class));
+        }
+        LibAspect.setListener(null);
     }
 }

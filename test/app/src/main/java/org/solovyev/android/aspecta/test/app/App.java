@@ -16,9 +16,12 @@ package org.solovyev.android.aspecta.test.app;
 
 import android.app.Application;
 import android.support.annotation.NonNull;
+import android.util.Log;
 import android.widget.Toast;
 
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.Signature;
+import org.solovyev.android.aspecta.test.lib.LibAspect;
 
 public class App extends Application {
 
@@ -26,8 +29,26 @@ public class App extends Application {
         AppAspect.setListener(new AppAspect.Listener() {
             @Override
             public void onExecuted(@NonNull JoinPoint jp) {
-                Toast.makeText(App.this, jp.getSignature().getName(), Toast.LENGTH_SHORT).show();
+                handle(makeMessage("App", jp));
             }
         });
+        LibAspect.setListener(new LibAspect.Listener() {
+            @Override
+            public void onExecuted(@NonNull JoinPoint jp) {
+                handle(makeMessage("Lib", jp));
+            }
+        });
+    }
+
+    private void handle(@NonNull String msg) {
+        Toast.makeText(App.this, msg, Toast.LENGTH_SHORT).show();
+        Log.d("Aspecta", msg);
+    }
+
+    @NonNull
+    private String makeMessage(@NonNull String tag, @NonNull JoinPoint jp) {
+        final Signature signature = jp.getSignature();
+        final Object obj = jp.getThis();
+        return tag + "/" + signature.getName() + "@" + obj.getClass().getSimpleName();
     }
 }

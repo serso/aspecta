@@ -17,16 +17,26 @@ package org.solovyev.android.aspecta.test.app;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
+import org.solovyev.android.aspecta.test.lib.LibAnnotation;
+import org.solovyev.android.aspecta.test.lib.LibObject;
+
 public class MainActivity extends AppCompatActivity {
 
     @AppAnnotation
-    public void wovenMethod() {
+    public void appWovenMethod() {
+    }
+
+    @LibAnnotation
+    public void libWovenMethod() {
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        wovenMethod();
+        appWovenMethod();
+        libWovenMethod();
+        final LibObject obj = new LibObject();
+        obj.wovenMethod();
         setContentView(R.layout.activity_main);
     }
 }
