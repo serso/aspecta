@@ -1,2 +1,2 @@
-include ':test:app'
+include ':test:app', ':test:lib'
 include ':plugin'
