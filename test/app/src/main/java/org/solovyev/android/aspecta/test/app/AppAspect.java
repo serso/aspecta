@@ -23,7 +23,7 @@ import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 
 @Aspect
-public class MyAspect {
+public class AppAspect {
 
     public interface Listener {
         void onExecuted(@NonNull JoinPoint jp);
@@ -36,11 +36,11 @@ public class MyAspect {
         sListener = listener;
     }
 
-    @Pointcut("execution(@org.solovyev.android.aspecta.test.app.MyAnnotation * *(..))")
+    @Pointcut("execution(@org.solovyev.android.aspecta.test.app.AppAnnotation * *(..))")
     public void method() {
     }
 
-    @Pointcut("execution(@org.solovyev.android.aspecta.test.app.MyAnnotation *.new(..))")
+    @Pointcut("execution(@org.solovyev.android.aspecta.test.app.AppAnnotation *.new(..))")
     public void constructor() {
     }
 

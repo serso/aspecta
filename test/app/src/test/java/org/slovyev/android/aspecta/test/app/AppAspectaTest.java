@@ -23,14 +23,14 @@ import org.aspectj.lang.JoinPoint;
 import org.junit.Test;
 import org.solovyev.android.aspecta.test.app.BuildConfig;
 import org.solovyev.android.aspecta.test.app.MainActivity;
-import org.solovyev.android.aspecta.test.app.MyAspect;
+import org.solovyev.android.aspecta.test.app.AppAspect;
 
-public class AspectaTest {
+public class AppAspectaTest {
 
     @Test
     public void shouldInjectAspectInDebug() {
-        final MyAspect.Listener listener = mock(MyAspect.Listener.class);
-        MyAspect.setListener(listener);
+        final AppAspect.Listener listener = mock(AppAspect.Listener.class);
+        AppAspect.setListener(listener);
 
         final MainActivity activity = new MainActivity();
         activity.wovenMethod();
@@ -40,6 +40,6 @@ public class AspectaTest {
         } else {
             verify(listener, never()).onExecuted(any(JoinPoint.class));
         }
-        MyAspect.setListener(null);
+        AppAspect.setListener(null);
     }
 }

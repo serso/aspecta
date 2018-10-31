@@ -23,7 +23,7 @@ import org.aspectj.lang.JoinPoint;
 public class App extends Application {
 
     public App() {
-        MyAspect.setListener(new MyAspect.Listener() {
+        AppAspect.setListener(new AppAspect.Listener() {
             @Override
             public void onExecuted(@NonNull JoinPoint jp) {
                 Toast.makeText(App.this, jp.getSignature().getName(), Toast.LENGTH_SHORT).show();
