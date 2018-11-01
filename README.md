@@ -1,17 +1,17 @@
 # Description
 AspectJ for Android.
 
-# Usage
-
+# Installation
 In `build.gradle`:
 ```groovy
 buildscript {
-  dependencies {
-    repositories {
-      google()
-      jcenter()
-    }
+  // might be not needed depending on your project's setup
+  repositories {
+    google()
+    jcenter()
+  }
 
+  dependencies {
     classpath 'org.solovyev.android.aspecta:plugin:1.0.0'
   }
 }
@@ -20,7 +20,7 @@ apply plugin: 'com.android.application' // or 'com.android.library'
 apply plugin: 'org.solovyev.android.aspecta'
 
 aspecta {
-  // enabled AspectA only in debug builds
+  // enable AspectA only in debug builds
   enabled { BaseVariant variant -> variant.buildType.debuggable}
 }
 
@@ -29,6 +29,7 @@ dependencies {
 }
 ```
 
+# Usage
 Define an annotation:
 ```java
 package org.example.android;
